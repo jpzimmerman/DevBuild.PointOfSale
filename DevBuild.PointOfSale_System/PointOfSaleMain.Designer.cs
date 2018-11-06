@@ -30,11 +30,16 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.SubtotalTextBox = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.TableclothQtyDown = new System.Windows.Forms.Button();
             this.TableclothQtyUp = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tableclothButton = new System.Windows.Forms.Button();
             this.soupButton = new System.Windows.Forms.Button();
+            this.TaxTextBox = new System.Windows.Forms.TextBox();
+            this.SubtotalLabel = new System.Windows.Forms.Label();
+            this.TaxLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.TotalTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // quantityLabel
@@ -54,9 +59,10 @@
             this.SoupQtyUp.Name = "SoupQtyUp";
             this.SoupQtyUp.Size = new System.Drawing.Size(75, 23);
             this.SoupQtyUp.TabIndex = 2;
+            this.SoupQtyUp.Tag = "Soup";
             this.SoupQtyUp.Text = "More";
             this.SoupQtyUp.UseVisualStyleBackColor = true;
-            this.SoupQtyUp.Click += new System.EventHandler(this.SoupQtyUp_Click);
+            this.SoupQtyUp.Click += new System.EventHandler(this.QtyUp_Click);
             // 
             // SoupQtyDown
             // 
@@ -64,9 +70,10 @@
             this.SoupQtyDown.Name = "SoupQtyDown";
             this.SoupQtyDown.Size = new System.Drawing.Size(75, 23);
             this.SoupQtyDown.TabIndex = 3;
+            this.SoupQtyDown.Tag = "Soup";
             this.SoupQtyDown.Text = "Less";
             this.SoupQtyDown.UseVisualStyleBackColor = true;
-            this.SoupQtyDown.Click += new System.EventHandler(this.SoupQtyDown_Click);
+            this.SoupQtyDown.Click += new System.EventHandler(this.QtyDown_Click);
             // 
             // SoupQtyTextBox
             // 
@@ -80,14 +87,10 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Items.AddRange(new object[] {
-            "asdf",
-            "as"});
             this.listBox1.Location = new System.Drawing.Point(510, 41);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(278, 303);
             this.listBox1.TabIndex = 5;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // SubtotalTextBox
             // 
@@ -109,14 +112,16 @@
             this.textBox1.Size = new System.Drawing.Size(39, 20);
             this.textBox1.TabIndex = 11;
             // 
-            // button1
+            // TableclothQtyDown
             // 
-            this.button1.Location = new System.Drawing.Point(271, 377);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Less";
-            this.button1.UseVisualStyleBackColor = true;
+            this.TableclothQtyDown.Location = new System.Drawing.Point(271, 377);
+            this.TableclothQtyDown.Name = "TableclothQtyDown";
+            this.TableclothQtyDown.Size = new System.Drawing.Size(75, 23);
+            this.TableclothQtyDown.TabIndex = 10;
+            this.TableclothQtyDown.Tag = "Tablecloth";
+            this.TableclothQtyDown.Text = "Less";
+            this.TableclothQtyDown.UseVisualStyleBackColor = true;
+            this.TableclothQtyDown.Click += new System.EventHandler(this.QtyDown_Click);
             // 
             // TableclothQtyUp
             // 
@@ -127,6 +132,7 @@
             this.TableclothQtyUp.Tag = "Tablecloth";
             this.TableclothQtyUp.Text = "More";
             this.TableclothQtyUp.UseVisualStyleBackColor = true;
+            this.TableclothQtyUp.Click += new System.EventHandler(this.QtyUp_Click);
             // 
             // label1
             // 
@@ -152,6 +158,7 @@
             this.tableclothButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tableclothButton.UseCompatibleTextRendering = true;
             this.tableclothButton.UseVisualStyleBackColor = true;
+            this.tableclothButton.Click += new System.EventHandler(this.QtyUp_Click);
             // 
             // soupButton
             // 
@@ -166,14 +173,74 @@
             this.soupButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.soupButton.UseCompatibleTextRendering = true;
             this.soupButton.UseVisualStyleBackColor = true;
+            this.soupButton.Click += new System.EventHandler(this.QtyUp_Click);
+            // 
+            // TaxTextBox
+            // 
+            this.TaxTextBox.Cursor = System.Windows.Forms.Cursors.NoMove2D;
+            this.TaxTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.TaxTextBox.Location = new System.Drawing.Point(701, 380);
+            this.TaxTextBox.MaxLength = 24;
+            this.TaxTextBox.Name = "TaxTextBox";
+            this.TaxTextBox.ReadOnly = true;
+            this.TaxTextBox.Size = new System.Drawing.Size(87, 20);
+            this.TaxTextBox.TabIndex = 12;
+            this.TaxTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // SubtotalLabel
+            // 
+            this.SubtotalLabel.AutoSize = true;
+            this.SubtotalLabel.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubtotalLabel.Location = new System.Drawing.Point(598, 351);
+            this.SubtotalLabel.Name = "SubtotalLabel";
+            this.SubtotalLabel.Size = new System.Drawing.Size(70, 18);
+            this.SubtotalLabel.TabIndex = 13;
+            this.SubtotalLabel.Text = "Subtotal";
+            // 
+            // TaxLabel
+            // 
+            this.TaxLabel.AutoSize = true;
+            this.TaxLabel.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TaxLabel.Location = new System.Drawing.Point(598, 382);
+            this.TaxLabel.Name = "TaxLabel";
+            this.TaxLabel.Size = new System.Drawing.Size(94, 18);
+            this.TaxLabel.TabIndex = 14;
+            this.TaxLabel.Text = "Tax (6.00%)";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(598, 414);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 18);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Total";
+            // 
+            // TotalTextBox
+            // 
+            this.TotalTextBox.Cursor = System.Windows.Forms.Cursors.NoMove2D;
+            this.TotalTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.TotalTextBox.Location = new System.Drawing.Point(701, 412);
+            this.TotalTextBox.MaxLength = 24;
+            this.TotalTextBox.Name = "TotalTextBox";
+            this.TotalTextBox.ReadOnly = true;
+            this.TotalTextBox.Size = new System.Drawing.Size(87, 20);
+            this.TotalTextBox.TabIndex = 16;
+            this.TotalTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // PointOfSaleMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.TotalTextBox);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.TaxLabel);
+            this.Controls.Add(this.SubtotalLabel);
+            this.Controls.Add(this.TaxTextBox);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.TableclothQtyDown);
             this.Controls.Add(this.TableclothQtyUp);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tableclothButton);
@@ -203,9 +270,14 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.TextBox SubtotalTextBox;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button TableclothQtyDown;
         private System.Windows.Forms.Button TableclothQtyUp;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button tableclothButton;
+        private System.Windows.Forms.TextBox TaxTextBox;
+        private System.Windows.Forms.Label SubtotalLabel;
+        private System.Windows.Forms.Label TaxLabel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox TotalTextBox;
     }
 }

@@ -14,8 +14,6 @@ namespace DevBuild.PointOfSale_System {
             InitializeComponent();
             SoupQtyTextBox.Text = "0";
             SubtotalTextBox.Text = PointOfSaleRepository.Subtotal.ToString("#,###.00");
-            soupButton.Click += SoupQtyUp_Click;            //else soupQty.Text = "0";
-            
         }
 
         private void SoupQtyTextBox_TextChanged(object sender, EventArgs e) {
@@ -30,73 +28,72 @@ namespace DevBuild.PointOfSale_System {
             SubtotalTextBox.Text = CheckoutCart.CalculateSubtotal().ToString("#,###.00");
         }
 
-        private void SoupQtyUp_Click(object sender, EventArgs e) {
+        private void QtyUp_Click(object sender, EventArgs e) {
             int i;
-            if (int.TryParse(SoupQtyTextBox.Text.Trim(), out i) && Inventory.Items[soupButton.Tag.ToString()].NumberInStock > 0) {
-                SoupQtyTextBox.Text = (++i).ToString();
-                Inventory.SellItems(soupButton.Tag.ToString());
+            int textBoxQty = 0;
+            if (sender is Control) {
+                Control controlRef = sender as Control;
+                if (Inventory.Items[controlRef.Tag.ToString()].NumberInStock > 0) {
+                    //SoupQtyTextBox.Text = (++textBoxQty).ToString();
+                    Inventory.SellItems(controlRef.Tag.ToString());
 
-                foreach (object c in listBox1.Items) {
-                    if (c is Product && (c as Product).Name == "Soup") {
-                        (c as Product).NumberInStock++;
+                    for (i = 0; i < listBox1.Items.Count; i++) {
+                        if (listBox1.Items[i] is Product && (listBox1.Items[i] as Product).Name == controlRef.Tag.ToString()) {
+                            (listBox1.Items[i] as Product).NumberInStock++;
+                            listBox1.BeginUpdate();
+                            //listBox1.Invalidate(listBox1.GetItemRectangle(i));
+                            listBox1.Items[i] = listBox1.Items[i];
+                            listBox1.Update();
+                            listBox1.EndUpdate();
+                            SubtotalTextBox.Text = CheckoutCart.CalculateSubtotal().ToString("#,###.00");
+                            return;
+                        }
+                    }
+
+                    Product listProduct = (Product)Inventory.Items[controlRef.Tag.ToString()].Clone();
+                    listProduct.NumberInStock = 1;
+                    listBox1.Items.Add(listProduct);
+                    SubtotalTextBox.Text = CheckoutCart.CalculateSubtotal().ToString("#,###.00");
+                }
+                if (Inventory.Items[controlRef.Tag.ToString()].NumberInStock == 0) {
+                    controlRef.Enabled = false;
+                }
+            }
+        }
+
+        private void QtyDown_Click(object sender, EventArgs e) {
+            int i;
+            if (sender is Control) {
+                Control controlRef = sender as Control;
+                if (int.TryParse(SoupQtyTextBox.Text.Trim(), out i) && i > 0) {
+                    SoupQtyTextBox.Text = (--i).ToString();
+                    
+                }
+                if (Inventory.Items[controlRef.Tag.ToString()].NumberInStock == 1) {
+                    SoupQtyUp.Enabled = true;
+                }
+                Inventory.ReturnItems(controlRef.Tag.ToString());
+                for (int j = 0; j < listBox1.Items.Count; j++) {
+                    if (listBox1.Items[j] is Product && (listBox1.Items[j] as Product).Name == controlRef.Tag.ToString()) {
+                        (listBox1.Items[j] as Product).NumberInStock--;
+                        //listBox1.Invalidate(listBox1.GetItemRectangle(j));
+                        listBox1.Items[j] = listBox1.Items[j];
+                        if ((listBox1.Items[j] as Product).NumberInStock == 0) {
+                            listBox1.Items.RemoveAt(j);
+                        }
+
                         listBox1.BeginUpdate();
-                        listBox1.Invalidate(listBox1.GetItemRectangle(2));
-                        listBox1.Items[2] = listBox1.Items[2];
-                        //listBox1.Refresh();
                         listBox1.Update();
                         listBox1.EndUpdate();
                         SubtotalTextBox.Text = CheckoutCart.CalculateSubtotal().ToString("#,###.00");
                         return;
                     }
-                }
-
-                Product listProduct = (Product)Inventory.Items["Soup"].Clone();
-                listProduct.NumberInStock = 1;
-                listBox1.Items.Add(listProduct);
-                SubtotalTextBox.Text = CheckoutCart.CalculateSubtotal().ToString("#,###.00");
-            }
-            if (Inventory.Items[soupButton.Tag.ToString()].NumberInStock == 0) {
-                SoupQtyUp.Enabled = false;
-            }
-        }
-
-        private void SoupQtyDown_Click(object sender, EventArgs e) {
-            int i;
-            if (int.TryParse(SoupQtyTextBox.Text.Trim(), out i) && i > 0) {
-                SoupQtyTextBox.Text = (--i).ToString();
-                Inventory.ReturnItems(soupButton.Tag.ToString());
-            }
-            if (Inventory.Items[soupButton.Tag.ToString()].NumberInStock == 1) {
-                SoupQtyUp.Enabled = true;
-            }
-            foreach (object c in listBox1.Items) {
-                if (c is Product && (c as Product).Name == "Soup") {
-                    (c as Product).NumberInStock--;
-                    listBox1.Invalidate(listBox1.GetItemRectangle(2));
-                    listBox1.Items[2] = listBox1.Items[2];
-                    if ((c as Product).NumberInStock == 0) {
-                        listBox1.Items.RemoveAt(2);
-                    }
-                    
-                    listBox1.BeginUpdate();
-                    
-
-                    //listBox1.Refresh();
-                    listBox1.Update();
-                    listBox1.EndUpdate();
                     SubtotalTextBox.Text = CheckoutCart.CalculateSubtotal().ToString("#,###.00");
-                    return;
                 }
-                SubtotalTextBox.Text = CheckoutCart.CalculateSubtotal().ToString("#,###.00");
             }
         }
 
         private void PointOfSaleMain_Load(object sender, EventArgs e) {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e) {
-
         }
     }
 }
