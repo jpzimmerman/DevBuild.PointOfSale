@@ -8,11 +8,16 @@ namespace DevBuild.PointOfSale_System {
     enum PaymentType { Cash, Check, Credit}
 
     class PointOfSaleRepository {
+        private const double LOCAL_SALES_TAX_RATE = 0.0600f;
 
+        public static double Total {
+            get { return CheckoutCart.CalculateSubtotal() * (1.00f + LOCAL_SALES_TAX_RATE); }
+        }
+        public static double SalesTaxAmount {
+            get { return CheckoutCart.CalculateSubtotal() * LOCAL_SALES_TAX_RATE; }
+        }
 
-        public static double Subtotal { get; set; } = 0.0f;
-
-        public bool ApplyCoupon(List<Product> shoppingCart, CouponInfo coupon) {
+        public static bool ApplyCoupon(List<Product> shoppingCart, CouponInfo coupon) {
             return true;
         }
 
