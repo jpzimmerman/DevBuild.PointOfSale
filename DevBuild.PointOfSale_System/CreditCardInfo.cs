@@ -11,6 +11,10 @@ namespace DevBuild.PointOfSale_System {
 
         public byte[] CardNumber { get; set; } = new byte[16];
 
+        public override bool PaymentInfoComplete() {
+            return true;
+        }
+
 
 
     }

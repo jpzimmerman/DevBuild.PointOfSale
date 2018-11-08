@@ -32,6 +32,8 @@ namespace DevBuild.PointOfSale_System {
 
         public PaymentInfo(double tenderedAmt) => _tenderedAmount = tenderedAmt;
 
+        public abstract bool PaymentInfoComplete();
+
 
     }
 }

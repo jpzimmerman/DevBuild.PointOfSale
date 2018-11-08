@@ -13,5 +13,6 @@ namespace DevBuild.PointOfSale_System {
         public ConfirmationForm() {
             InitializeComponent();
         }
+
     }
 }

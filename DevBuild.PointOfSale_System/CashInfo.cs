@@ -7,5 +7,9 @@ using System.Threading.Tasks;
 namespace DevBuild.PointOfSale_System {
     public class CashInfo : PaymentInfo {
         public CashInfo(double tenderedAmount) : base(tenderedAmount) { }
+
+        public override bool PaymentInfoComplete() {
+            return (ChangeAmount >= 0);
+        }
     }
 }

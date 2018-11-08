@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DevBuild.PointOfSale_System {
 
-    public enum ProductCategory { Apparel, Housewares, Games, Electronics, Grocery }
+    public enum ProductCategory { Apparel, Housewares, Games, Electronics, Grocery, Toys }
 
     [Serializable]
     public class Product : ICloneable {

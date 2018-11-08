@@ -12,5 +12,9 @@ namespace DevBuild.PointOfSale_System {
         public CheckingAccountInfo() { }
 
         public CheckingAccountInfo(double tenderedAmount) : base(tenderedAmount) { }
+
+        public override bool PaymentInfoComplete() {
+            return true;
+        }
     }
 }
