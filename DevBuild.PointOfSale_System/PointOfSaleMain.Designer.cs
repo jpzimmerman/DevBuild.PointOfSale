@@ -33,13 +33,14 @@
             this.TableclothQtyDown = new System.Windows.Forms.Button();
             this.TableclothQtyUp = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.tableclothButton = new System.Windows.Forms.Button();
-            this.soupButton = new System.Windows.Forms.Button();
             this.TaxTextBox = new System.Windows.Forms.TextBox();
             this.SubtotalLabel = new System.Windows.Forms.Label();
             this.TaxLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.TotalTextBox = new System.Windows.Forms.TextBox();
+            this.CheckoutButton = new System.Windows.Forms.Button();
+            this.tableclothButton = new System.Windows.Forms.Button();
+            this.soupButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // quantityLabel
@@ -145,36 +146,6 @@
             this.label1.Text = "Quantity\r\n                   ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tableclothButton
-            // 
-            this.tableclothButton.Font = new System.Drawing.Font("Monotype Corsiva", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableclothButton.Image = global::DevBuild.PointOfSale_System.Properties.Resources.stock_tablecloth;
-            this.tableclothButton.Location = new System.Drawing.Point(77, 266);
-            this.tableclothButton.Name = "tableclothButton";
-            this.tableclothButton.Size = new System.Drawing.Size(184, 188);
-            this.tableclothButton.TabIndex = 7;
-            this.tableclothButton.Tag = "Tablecloth";
-            this.tableclothButton.Text = "Pretty big tablecloth";
-            this.tableclothButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tableclothButton.UseCompatibleTextRendering = true;
-            this.tableclothButton.UseVisualStyleBackColor = true;
-            this.tableclothButton.Click += new System.EventHandler(this.QtyUp_Click);
-            // 
-            // soupButton
-            // 
-            this.soupButton.Font = new System.Drawing.Font("Monotype Corsiva", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.soupButton.Image = global::DevBuild.PointOfSale_System.Properties.Resources.stock_soupcan;
-            this.soupButton.Location = new System.Drawing.Point(77, 30);
-            this.soupButton.Name = "soupButton";
-            this.soupButton.Size = new System.Drawing.Size(184, 188);
-            this.soupButton.TabIndex = 0;
-            this.soupButton.Tag = "Soup";
-            this.soupButton.Text = "Fancy-ass Soup";
-            this.soupButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.soupButton.UseCompatibleTextRendering = true;
-            this.soupButton.UseVisualStyleBackColor = true;
-            this.soupButton.Click += new System.EventHandler(this.QtyUp_Click);
-            // 
             // TaxTextBox
             // 
             this.TaxTextBox.Cursor = System.Windows.Forms.Cursors.NoMove2D;
@@ -229,11 +200,57 @@
             this.TotalTextBox.TabIndex = 16;
             this.TotalTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // CheckoutButton
+            // 
+            this.CheckoutButton.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CheckoutButton.Image = global::DevBuild.PointOfSale_System.Properties.Resources.checkoutcart1;
+            this.CheckoutButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CheckoutButton.Location = new System.Drawing.Point(510, 452);
+            this.CheckoutButton.Name = "CheckoutButton";
+            this.CheckoutButton.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
+            this.CheckoutButton.Size = new System.Drawing.Size(278, 71);
+            this.CheckoutButton.TabIndex = 17;
+            this.CheckoutButton.Text = "Checkout";
+            this.CheckoutButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CheckoutButton.UseVisualStyleBackColor = true;
+            this.CheckoutButton.Click += new System.EventHandler(this.CheckoutButton_Click);
+            // 
+            // tableclothButton
+            // 
+            this.tableclothButton.Font = new System.Drawing.Font("Monotype Corsiva", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableclothButton.Image = global::DevBuild.PointOfSale_System.Properties.Resources.stock_tablecloth;
+            this.tableclothButton.Location = new System.Drawing.Point(77, 266);
+            this.tableclothButton.Name = "tableclothButton";
+            this.tableclothButton.Size = new System.Drawing.Size(184, 188);
+            this.tableclothButton.TabIndex = 7;
+            this.tableclothButton.Tag = "Tablecloth";
+            this.tableclothButton.Text = "Pretty big tablecloth";
+            this.tableclothButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tableclothButton.UseCompatibleTextRendering = true;
+            this.tableclothButton.UseVisualStyleBackColor = true;
+            this.tableclothButton.Click += new System.EventHandler(this.QtyUp_Click);
+            // 
+            // soupButton
+            // 
+            this.soupButton.Font = new System.Drawing.Font("Monotype Corsiva", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.soupButton.Image = global::DevBuild.PointOfSale_System.Properties.Resources.stock_soupcan;
+            this.soupButton.Location = new System.Drawing.Point(77, 30);
+            this.soupButton.Name = "soupButton";
+            this.soupButton.Size = new System.Drawing.Size(184, 188);
+            this.soupButton.TabIndex = 0;
+            this.soupButton.Tag = "Soup";
+            this.soupButton.Text = "Fancy-ass Soup";
+            this.soupButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.soupButton.UseCompatibleTextRendering = true;
+            this.soupButton.UseVisualStyleBackColor = true;
+            this.soupButton.Click += new System.EventHandler(this.QtyUp_Click);
+            // 
             // PointOfSaleMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.CheckoutButton);
             this.Controls.Add(this.TotalTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TaxLabel);
@@ -279,5 +296,6 @@
         private System.Windows.Forms.Label TaxLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TotalTextBox;
+        private System.Windows.Forms.Button CheckoutButton;
     }
 }

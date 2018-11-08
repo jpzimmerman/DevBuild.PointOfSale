@@ -9,7 +9,6 @@ using System.Windows.Forms;
 
 namespace DevBuild.PointOfSale_System {
     public sealed class Inventory {
-        //private static readonly Inventory _instance = new Inventory();
         public static Dictionary<string, Product> Items { get; set; } = new Dictionary<string, Product>();
 
         static Inventory() {
@@ -17,12 +16,7 @@ namespace DevBuild.PointOfSale_System {
         }
 
         private Inventory() {
-            
         }
-
-        //public static Inventory Instance {
-        //    get { return _instance; }
-        //}
 
         public static void Load() {
             if (File.Exists("items.dat"))
@@ -78,7 +72,7 @@ namespace DevBuild.PointOfSale_System {
                         }
                     }
                 }
-                    Items[returnItem].NumberInStock++;
+                Items[returnItem].NumberInStock++;
                 Console.WriteLine($"{returnItem} returned to stock");
                 DisplayItems();
             }

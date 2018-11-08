@@ -49,10 +49,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CashInfo.cs" />
+    <Compile Include="CheckingAccountInfo.cs" />
     <Compile Include="CheckoutCart.cs" />
+    <Compile Include="ConfirmationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfirmationForm.Designer.cs">
+      <DependentUpon>ConfirmationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CouponInfo.cs" />
     <Compile Include="CreditCardInfo.cs" />
     <Compile Include="Inventory.cs" />
+    <Compile Include="Keypad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Keypad.Designer.cs">
+      <DependentUpon>Keypad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaymentForm.Designer.cs">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentInfo.cs" />
     <Compile Include="PointOfSaleMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,11 +89,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\Validation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ConfirmationForm.resx">
+      <DependentUpon>ConfirmationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Keypad.resx">
+      <DependentUpon>Keypad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaymentForm.resx">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PointOfSaleMain.resx">
       <DependentUpon>PointOfSaleMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +117,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\stock_tablecloth.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checkoutcart1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no_I_cant_break_your_benjamin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no_I_cant_break_your_benjamin1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no_I_cant_break_your_benjamin2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

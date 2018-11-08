@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DevBuild.PointOfSale_System {
-    enum PaymentType { Cash, Check, Credit}
+    public enum PaymentType { Cash, Check, Credit}
 
-    class PointOfSaleRepository {
+    public class PointOfSaleRepository {
         private const double LOCAL_SALES_TAX_RATE = 0.0600f;
 
         public static double Total {

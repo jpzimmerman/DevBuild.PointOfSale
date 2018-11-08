@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevBuild.PointOfSale_System", "DevBuild.PointOfSale_System\DevBuild.PointOfSale_System.csproj", "{0394D7BC-B284-408A-928D-8EA6AC8D9ADD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevBuild.PointOfSale_SystemTests", "DevBuild.PointOfSale_SystemTests\DevBuild.PointOfSale_SystemTests.csproj", "{D547C3AA-D7EF-4EE0-BE08-42663086E7A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0394D7BC-B284-408A-928D-8EA6AC8D9ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0394D7BC-B284-408A-928D-8EA6AC8D9ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0394D7BC-B284-408A-928D-8EA6AC8D9ADD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D547C3AA-D7EF-4EE0-BE08-42663086E7A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D547C3AA-D7EF-4EE0-BE08-42663086E7A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D547C3AA-D7EF-4EE0-BE08-42663086E7A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D547C3AA-D7EF-4EE0-BE08-42663086E7A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

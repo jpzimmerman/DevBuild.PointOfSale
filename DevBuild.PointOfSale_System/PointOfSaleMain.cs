@@ -15,7 +15,10 @@ namespace DevBuild.PointOfSale_System {
             InitializeComponent();
             SoupQtyTextBox.Text = "0";
             UpdateTotals();
+            //paymentForm.Shown += delegate { paymentForm.InitializeGrandTotal(); };
         }
+
+        //private PaymentForm paymentForm = new PaymentForm();
 
         private void SoupQtyTextBox_TextChanged(object sender, EventArgs e) {
             int numOutput;
@@ -35,10 +38,20 @@ namespace DevBuild.PointOfSale_System {
             TotalTextBox.Text = PointOfSaleRepository.Total.ToString("C");
         }
 
+        private void CheckoutButton_Click(object sender, EventArgs e) {
+            this.Hide();
+            new PaymentForm().Show();
+        }
+
+        private void UpdateListboxItems() {
+            listBox1.BeginUpdate();
+            listBox1.Update();
+            listBox1.EndUpdate();
+        }
+
 
         private void QtyUp_Click(object sender, EventArgs e) {
             int i;
-            int textBoxQty = 0;
             if (sender is Control) {
                 Control controlRef = sender as Control;
                 bool itemFound = false;
@@ -51,11 +64,8 @@ namespace DevBuild.PointOfSale_System {
                         if (listBox1.Items[i] is Product && (listBox1.Items[i] as Product).Name == controlRef.Tag.ToString()) {
                             itemFound = true;
                             (listBox1.Items[i] as Product).NumberInStock++;
-                            listBox1.BeginUpdate();
                             //listBox1.Invalidate(listBox1.GetItemRectangle(i));
                             listBox1.Items[i] = listBox1.Items[i];
-                            listBox1.Update();
-                            listBox1.EndUpdate();
                             break;
                         }
                     }
@@ -66,6 +76,7 @@ namespace DevBuild.PointOfSale_System {
                         listProduct.NumberInStock = 1;
                         listBox1.Items.Add(listProduct);
                     }
+                    UpdateListboxItems();
                 }
                 UpdateTotals();
 
@@ -94,10 +105,7 @@ namespace DevBuild.PointOfSale_System {
                         if ((listBox1.Items[j] as Product).NumberInStock == 0) {
                             listBox1.Items.RemoveAt(j);
                         }
-
-                        listBox1.BeginUpdate();
-                        listBox1.Update();
-                        listBox1.EndUpdate();
+                        UpdateListboxItems();
                         SubtotalTextBox.Text = CheckoutCart.CalculateSubtotal().ToString("C");
                         TaxTextBox.Text = PointOfSaleRepository.SalesTaxAmount.ToString("C");
                         break;
@@ -105,6 +113,7 @@ namespace DevBuild.PointOfSale_System {
                 }
             }
             UpdateTotals();
+            UpdateListboxItems();
         }
 
         private void PointOfSaleMain_Load(object sender, EventArgs e) {
